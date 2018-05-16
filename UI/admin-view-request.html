@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Maintenance Tracker | View All Requests</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <section class="container">
+            <div class="header-brand"><a href="/Maintenance-Tracker">Maintenance Tracker</a></div>
+                <nav>
+                    <ul class="header-nav" role="navigation">
+                        <li class="nav-left"><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="sign-up.html">Create Account</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+    </header>
+    <main class="container">
+        <section class="card">
+            <p id="welcome">Filter Requests</p>
+            <div class="columns">
+                <div class="column">
+                    <div class="card-body centered">
+                        <button class=" button primary" onclick="showAll">View All</button>
+                    </div> 
+                </div>
+                <div class="column">
+                    <div class="card-body centered">
+                        <button class=" button primary" onclick="showPending">Pending Requests</button>
+                    </div> 
+                </div>
+                <div class="column">
+                    <div class="card-body centered">
+                        <button class=" button primary" onclick="showApproved">Approved Requests</button>
+                    </div> 
+                </div>
+                <div class="column">
+                    <div class="card-body centered">
+                        <button class=" button primary" onclick="showResolved">Resolved Requests</button>
+                    </div> 
+                </div>
+            </div>
+        </section>
+        <section class="card small-card">
+                <div class="card-head">
+                    All Requests
+                </div>
+                <ul class="card-body">
+                    <li class="columns">
+                        <a href="request-detail.html">Lorem, ipsum dolor.</a>
+                        <div>Finished</div>
+                    </li>
+                    <li class="columns">
+                        <a href="request-detail.html">Lorem, ipsum dolor.</a>
+                        <div class="columns">
+                            <button class="small button primary" onclick="approveRequest">Approve</button>
+                            <button class="small button danger" onclick="rejectRequest">Reject</button>
+                        </div>
+                    </li>
+                    <li class="columns">
+                        <a href="request-detail.html">Lorem, ipsum dolor.</a>
+                        <div>Finished</div>
+                    </li>
+                    <li class="columns">
+                        <a href="request-detail.html">Lorem, ipsum dolor.</a>
+                        <div class="columns">
+                            <button class="small button primary" onclick="approveRequest">Approve</button>
+                            <button class="small button danger" onclick="rejectRequest">Reject</button>
+                        </div>
+                    </li>
+                    <li class="columns">
+                        <a href="request-detail.html">Lorem, ipsum dolor.</a>
+                        <div class="columns">
+                            <button class="small button primary" onclick="resolveRequest">Resolve</button>
+                        </div>
+                    </li>
+                    <li class="columns">
+                        <a href="request-detail.html">Lorem, ipsum dolor.</a>
+                        <div class="columns">
+                            <button class="small button primary" onclick="approveRequest">Approve</button>
+                            <button class="small button danger" onclick="rejectRequest">Reject</button>
+                        </div>
+                    </li>
+                    <li class="columns">
+                        <a href="request-detail.html">Lorem, ipsum dolor.</a>
+                        <div class="columns">
+                            <button class="small button primary" onclick="approveRequest">Approve</button>
+                            <button class="small button danger" onclick="rejectRequest">Reject</button>
+                        </div>
+                    </li>
+                    <li class="columns">
+                        <a href="request-detail.html">Lorem, ipsum dolor.</a>
+                        <div>Finished</div>
+                    </li>
+                    <li class="columns">
+                        <a href="request-detail.html">Lorem, ipsum dolor.</a>
+                        <div class="columns">
+                            <button class="small button primary" onclick="approveRequest">Approve</button>
+                            <button class="small button danger" onclick="rejectRequest">Reject</button>
+                        </div>
+                    </li>
+                    <li class="columns">
+                        <a href="request-detail.html">Lorem, ipsum dolor.</a>
+                        <div class="columns">
+                            <button class="small button primary" onclick="approveRequest">Approve</button>
+                            <button class="small button danger" onclick="rejectRequest">Reject</button>
+                        </div>
+                    </li>
+                </ul>
+        </section>
+        
+    </main>
+    <script></script>
+</body>
+</html>
