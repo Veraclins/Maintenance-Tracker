@@ -5,9 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "start": "nodemon src/index.js --exec babel-node --presets babel-preset-env",
-    "test": "mocha --compilers js:babel-register --require babel-polyfill",
-    "coverage": "babel-node ./node_modules/istanbul/lib/cli cover _mocha",
-    "pretest": "eslint --ignore-path .gitignore ."
+    "test": "cross-env NODE_ENV=test nyc mocha",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -34,23 +33,38 @@
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
     "body-parser": "^1.18.3",
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "method-override": "^2.3.10",
+    "mocha": "^5.1.1",
     "morgan": "^1.9.0",
-    "nodemon": "^1.17.4"
+    "nodemon": "^1.17.4",
+    "supertest": "^3.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "chai": "^4.1.2",
-    "chai-http": "^4.0.0",
+    "babel-plugin-istanbul": "^4.1.6",
     "cors": "^2.8.4",
+    "coveralls": "^3.0.1",
+    "cross-env": "^5.1.5",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.11.0",
-    "istanbul": "^0.4.5",
-    "mocha": "^5.1.1",
-    "supertest": "^3.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "nyc": "^11.8.0",
     "webpack": "^4.8.3"
+  },
+  "nyc": {
+    "require": [
+      "babel-register",
+      "babel-polyfill"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "sourceMap": false,
+    "instrument": false
   }
 }
