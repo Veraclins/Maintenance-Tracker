@@ -6,6 +6,7 @@
   "scripts": {
     "start": "nodemon src/index.js --exec babel-node --presets babel-preset-env",
     "test": "mocha --compilers js:babel-register --require babel-polyfill",
+    "coverage": "babel-node ./node_modules/istanbul/lib/cli cover _mocha",
     "pretest": "eslint --ignore-path .gitignore ."
   },
   "repository": {
@@ -47,7 +48,9 @@
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.11.0",
+    "istanbul": "^0.4.5",
     "mocha": "^5.1.1",
+    "supertest": "^3.1.0",
     "webpack": "^4.8.3"
   }
 }

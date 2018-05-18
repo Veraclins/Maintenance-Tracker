@@ -22,3 +22,5 @@ app.use('/v1', routes);
 const { PORT = 3000 } = process.env;
 
 app.listen(PORT, () => console.log(`The server is live on port ${PORT}`)); // eslint-disable-line no-console
+
+export default app;
