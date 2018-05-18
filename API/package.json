@@ -1,0 +1,53 @@
+{
+  "name": "maintenance-tracker-api",
+  "version": "1.0.0",
+  "description": "A RESTFUL Api for the Maintenance tracker app for Andela Bootcamp Challenge",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon src/index.js --exec babel-node --presets babel-preset-env",
+    "test": "mocha --compilers js:babel-register --require babel-polyfill",
+    "pretest": "eslint --ignore-path .gitignore ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Veraclins/Maintenance-Tracker-2.git"
+  },
+  "keywords": [
+    "ES6",
+    "Nodejs",
+    "API",
+    "RESTFUL",
+    "TDD",
+    "gitflow"
+  ],
+  "author": "Agada Clinton I.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Veraclins/Maintenance-Tracker-2/issues"
+  },
+  "homepage": "https://github.com/Veraclins/Maintenance-Tracker-2#readme",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-loader": "^7.1.4",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "body-parser": "^1.18.3",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "method-override": "^2.3.10",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.17.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "cors": "^2.8.4",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "mocha": "^5.1.1",
+    "webpack": "^4.8.3"
+  }
+}
