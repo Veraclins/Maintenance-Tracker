@@ -31,9 +31,8 @@ ul {
 }
 
 a:link, a:visited {
-    text-align: center; 
     text-decoration: none;
-    display: inline-block;
+    display: block;
 }
 
 a:hover, a:active {
@@ -127,7 +126,7 @@ input[type=submit]:hover {
     display: flex;
     display: -webkit-flex;
     display: -ms-flexbox;
-    padding: 10px 10px;
+    padding: 10px;
     margin: 0;
     color: #fff;
     font-size: 0.9em;
@@ -165,6 +164,9 @@ margin-right: 20px;
 .small-card {    
     width: 50%;
 }
+.medium-card {    
+    width: 70%;
+}
 
 .card-head {
     box-shadow: 0 2px 0 0 rgba(0,0,0,0.2);
@@ -172,14 +174,16 @@ margin-right: 20px;
     font-weight: bold;
     width: 90%;
     font-size: 28px;
-    margin-bottom: 10px;
-    padding: 8px;
+    margin: auto;
+    padding-bottom: 16px;
+    margin-bottom: 8px;
     text-transform: uppercase;
 }
 
 .card-body {
-    padding: 8px 8px;
-    margin: 4px 0;
+    width: 90%;
+    padding: 16px 20px;
+    margin: auto;
     white-space: pre-line;
     text-decoration: none;
     text-align: justify;
@@ -188,42 +192,26 @@ margin-right: 20px;
 
 .form-card {
     width: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin: auto;
 }
 
-@media screen and (max-width: 600px) {
-    .form-card {
-        width: 90%;
-    }
-
-    .columns, .header-nav { 
-        flex-flow: column wrap;
-    }
-
-    .column {        
-        flex: 0;   
-        margin: 0 -6px;
-    }
-
-    .small-card {    
-        width: 90%;
-    }
+.form-section {
+    margin: 16px;
+    padding: 8px 0;
 }
 
 .columns {    
     display: flex;
-    margin: 0 -6px;
     display: -webkit-flex;
     display: -ms-flexbox;
+    margin: 0;
+    padding: 0;
     justify-content: space-between;
 }
 
 .column { 
     flex: 1;   
-    margin: 0 6px;
+    width: 0;
 }
 
 .centered {
@@ -237,10 +225,35 @@ margin-right: 20px;
 .danger {
     color: red;
 }
+.warning {
+    color: orange;
+}
 
 .small {
     border: 1px solid;
     padding: 4px;
+}
+
+/* Smaller screeens*/
+
+@media screen and (max-width: 600px) {
+    .form-card {
+        width: 90%;
+    }
+
+    .columns, .header-nav { 
+        flex-flow: column wrap;
+    }
+
+    .column {        
+        flex: 0;   
+        width: 100%;
+        margin: 0 -6px;
+    }
+
+    .small-card {    
+        width: 90%;
+    }
 }
 
 
