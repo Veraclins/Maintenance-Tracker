@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/Veraclins/Maintenance-Tracker.svg?branch=develop)](https://travis-ci.org/Veraclins/Maintenance-Tracker) [![Coverage Status](https://coveralls.io/repos/github/Veraclins/Maintenance-Tracker/badge.svg?branch=ft-api-endpoints-1051613)](https://coveralls.io/github/Veraclins/Maintenance-Tracker?branch=ft-api-endpoints-1051613)
 # Maintenance-Tracker
 This is my second attempt at the Andela Maintenancace Tracker Challenge
 
