@@ -15,74 +15,156 @@
             </div>
             <nav>
                 <ul class="header-nav" role="navigation">
-                    <li class="nav-left"><a href="dashboard.html">Dashboard</a></li>
-                    <li><a href="sign-up.html">Create Account</a></li>
-                    <li><a href="login.html">Login</a></li>
+                    <li class="nav-left"><a href="maintenance-tracker">Home</a></li>
+                    <li><a href="create-request.html">Create New Request</a></li>
+                    <li><a href="maintenance-tracker">Logout</a></li>
                 </ul>
             </nav>
         </section>
     </header>
     <main class="container">
         <section class="card">
-            <p id="welcome">Welcome {{Name}}, to your dashboard</p>
+            <p id="welcome">Clinton, welcome to your dashboard</p>
             <h3>Where you keep track of your maintenance requests and works</h3>
         </section>
-        <section class="columns">
-                <div class="column card">
-                    <div class="card-head">
-                        All Requests
+        <section class="card medium-card">
+            <div class="card-head" id="title">
+                All Requests
+            </div>
+            <ul class="card-body">
+                <li class="columns">
+                    <h2 class="column"><strong>Request</strong></h2>
+                    <div class="column columns">
+                        <h2><strong>Date</strong></h2>
+                        <h2><strong>Status</strong></h2>
                     </div>
-                    <ul class="card-body">
-                        <li><a href="request-details.html">Ullam, rem provident.</a></li>
-                        <li><a href="request-details.html">Magnam, incidunt ad.</a></li>
-                        <li><a href="request-details.html">Enim, dolore eum.</a></li>
-                        <li><a href="request-details.html">Optio, quasi id!</a></li>
-                        <li><a href="request-details.html">Lorem, ipsum dolor.</a></li>
-                        <li><a href="request-details.html">Ullam, rem provident.</a></li>
-                        <li><a href="request-details.html">Magnam, incidunt ad.</a></li>
-                        <li><a href="request-details.html">Enim, dolore eum.</a></li>
-                        <li><a href="request-details.html">Optio, quasi id!</a></li>
-                    </ul>
-                </div>
-                <div class="column card">
-                    <div class="card-head">
-                        Approved Requests
-                    </div>
-                    <ul class="card-body">
-                        <li class="columns">
-                            <a href="request-details.html">Lorem, ipsum dolor.</a>
-                            <div>Finished</div>
-                        </li>
-                        <li class="columns">
-                            <a href="request-details.html">Lorem, ipsum dolor.</a>
-                            <button class="small primary" onclick="requestDone">Done</button>
-                        </li>
-                        <li class="columns">
-                            <a href="request-details.html">Lorem, ipsum dolor.</a>
-                            <button class="small primary" onclick="requestDone">Done</button>
-                        </li>
-                        <li class="columns">
-                            <a href="request-details.html">Lorem, ipsum dolor.</a>
-                            <button class="small primary" onclick="requestDone">Done</button>
-                        </li>
-                        <li class="columns">
-                            <a href="request-details.html">Lorem, ipsum dolor.</a>
-                            <button class="small primary" onclick="requestDone">Done</button>
-                        </li>
-                        <li class="columns">
-                            <a href="request-details.html">Lorem, ipsum dolor.</a>
-                            <button class="small primary" onclick="requestDone">Done</button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="column card">
-                    <div class="card-head">
-                        New Request
-                    </div>
-                    <div class="card-body centered">
-                        <a href="create-request.html" class=" button primary">Create Request</a>
-                    </div> 
-                </div>
+                </li>
+
+                <li class="columns" id="resolved">
+                    <a class="column" href="request-detail.html">Scanner General Servicing</a>
+                    <div class="column columns">
+                        <div>3 days ago</div>
+                        <div class="primary">Finished</div>
+                    </div>                    
+                </li>           
+
+                <li class="columns" id="resolved">
+                    <a class="column" href="request-detail.html">Monitor Board Replacement</a>
+                    <div class="column columns">
+                        <div>5 days ago</div>
+                        <div class="warning">Pending</div>
+                    </div>                    
+                </li>           
+
+                <li class="columns" id="resolved">
+                    <a class="column" href="request-detail.html">Scanner Flex Replacement</a>
+                    <div class="column columns">
+                        <div>3 days ago</div>
+                        <div class="danger">Rejected</div>
+                    </div>                    
+                </li>           
+
+                <li class="columns" id="resolved">
+                    <a class="column" href="request-detail.html">Scanner General Servicing</a>
+                    <div class="column columns">
+                        <div>7 days ago</div>
+                        <div class="danger">Rejected</div>
+                    </div>                    
+                </li>           
+                <li class="columns" id="resolved">
+                    <a class="column" href="request-detail.html">Scanner General Servicing</a>
+                    <div class="column columns">
+                        <div>3 days ago</div>
+                        <div class="primary">Finished</div>
+                    </div>                    
+                </li>           
+
+                <li class="columns" id="resolved">
+                    <a class="column" href="request-detail.html">Monitor Board Replacement</a>
+                    <div class="column columns">
+                        <div>5 days ago</div>
+                        <div class="warning">Pending</div>
+                    </div>                    
+                </li>           
+
+                <li class="columns" id="resolved">
+                    <a class="column" href="request-detail.html">Scanner Flex Replacement</a>
+                    <div class="column columns">
+                        <div>3 days ago</div>
+                        <div class="danger">Rejected</div>
+                    </div>                    
+                </li>           
+
+                <li class="columns" id="resolved">
+                    <a class="column" href="request-detail.html">Scanner General Servicing</a>
+                    <div class="column columns">
+                        <div>7 days ago</div>
+                        <div class="danger">Rejected</div>
+                    </div>                    
+                </li>           
+                <li class="columns" id="resolved">
+                    <a class="column" href="request-detail.html">Scanner General Servicing</a>
+                    <div class="column columns">
+                        <div>3 days ago</div>
+                        <div class="primary">Finished</div>
+                    </div>                    
+                </li>           
+
+                <li class="columns" id="resolved">
+                    <a class="column" href="request-detail.html">Monitor Board Replacement</a>
+                    <div class="column columns">
+                        <div>5 days ago</div>
+                        <div class="warning">Pending</div>
+                    </div>                    
+                </li>           
+
+                <li class="columns" id="resolved">
+                    <a class="column" href="request-detail.html">Scanner Flex Replacement</a>
+                    <div class="column columns">
+                        <div>3 days ago</div>
+                        <div class="danger">Rejected</div>
+                    </div>                    
+                </li>           
+
+                <li class="columns" id="resolved">
+                    <a class="column" href="request-detail.html">Scanner General Servicing</a>
+                    <div class="column columns">
+                        <div>7 days ago</div>
+                        <div class="danger">Rejected</div>
+                    </div>                    
+                </li>           
+                <li class="columns" id="resolved">
+                    <a class="column" href="request-detail.html">Scanner General Servicing</a>
+                    <div class="column columns">
+                        <div>3 days ago</div>
+                        <div class="primary">Finished</div>
+                    </div>                    
+                </li>           
+
+                <li class="columns" id="resolved">
+                    <a class="column" href="request-detail.html">Monitor Board Replacement</a>
+                    <div class="column columns">
+                        <div>5 days ago</div>
+                        <div class="warning">Pending</div>
+                    </div>                    
+                </li>           
+
+                <li class="columns" id="resolved">
+                    <a class="column" href="request-detail.html">Scanner Flex Replacement</a>
+                    <div class="column columns">
+                        <div>3 days ago</div>
+                        <div class="danger">Rejected</div>
+                    </div>                    
+                </li>           
+
+                <li class="columns" id="resolved">
+                    <a class="column" href="request-detail.html">Scanner General Servicing</a>
+                    <div class="column columns">
+                        <div>7 days ago</div>
+                        <div class="danger">Rejected</div>
+                    </div>                    
+                </li>           
+            </ul>
         </section>
         
     </main>
