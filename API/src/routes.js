@@ -1,32 +1,70 @@
 import { Router } from 'express';
-// import users from './storage/users';
+import requests from './storage/requests';
 
 const routes = Router();
 
-// // Routes
+// Routes
 routes.get('/', (req, res) => {
   res.send({ message: 'Welcome to Maintenance Tracker API.' });
 });
 
-// routes.get('/users', (req, res) => {
-//   res.send({ users });
-// });
+routes.get('/users/requests', (req, res) => {
+  const request = [];
+  requests.forEach((item) => {
+    // This is to mimic a logged in user
+    if (item.user_id === 2) {
+      request.push(item);
+    }
+  });
+  res.send(request);
+});
 
-// routes.get('/users/:id', (req, res) => {
-//   const user = users.find(c => c.id === parseInt(req.params.id, 10));
-//   if (!user) return res.status(404)
-// .send({ message: `A user with the id ${req.params.id} does not exist` });
-//   return res.send(user);
-// });
+routes.get('/users/requests/:requestId', (req, res) => {
+  const request = [];
+  requests.forEach((item) => {
+    if (item.id === parseInt(req.params.requestId, 10)) {
+      request.push(item);
+    }
+  });
+  if (!request.length) {
+    res.status(404).send({
+      message: `There is no request with the id ${req.params.requestId}`,
+    });
+  } else {
+    res.send(request);
+  }
+});
 
-// routes.post('/users', (req, res) => {
-//   const user = {
-//     id: users.length + 1,
-//     name: req.body.name,
-//     role: 'User',
-//   };
-//   users.push(user);
-//   res.send(user);
-// });
+routes.post('/users/requests', (req, res) => {
+  const request = {
+    id: requests.length + 1,
+    user_id: 2,
+    user_dept: req.body.user_dept,
+    title: req.body.title,
+    details: req.body.details,
+    duration: req.body.duration,
+  };
+  requests.push(request);
+  res.send(request);
+});
+
+routes.put('/users/requests/:requestId', (req, res) => {
+  const requestIndex = requests.findIndex(obj => obj.id === parseInt(req.params.requestId, 10));
+  if (requestIndex === -1) {
+    res.status(404).send({
+      message: `There is no request with the id ${req.params.requestId}`,
+    });
+  } else {
+    requests[requestIndex] = {
+      id: parseInt(req.params.requestId, 10),
+      user_id: 2,
+      user_dept: req.body.user_dept,
+      title: req.body.title,
+      details: req.body.details,
+      duration: req.body.duration,
+    };
+    res.send(requests[requestIndex]);
+  }
+});
 
 export default routes;

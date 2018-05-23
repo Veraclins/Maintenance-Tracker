@@ -7,6 +7,7 @@ import routes from './routes';
 
 
 const app = express();
+const { PORT = 3000 } = process.env;
 
 // Middlewares
 app.use(logger('dev', {
@@ -18,9 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Routes handler
 app.use('/v1', routes);
-
-const { PORT = 3000 } = process.env;
-
-app.listen(PORT, () => console.log(`The server is live on port ${PORT}`)); // eslint-disable-line no-console
+/* eslint-disable no-console */
+export const server = app.listen(PORT, () => console.log(`The server is live on port ${PORT}`));
 
 export default app;

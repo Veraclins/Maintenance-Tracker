@@ -12,3 +12,5 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
+script: cd API && npm install && npm run test
+after_success: npm run coverage
