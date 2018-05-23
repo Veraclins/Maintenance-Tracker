@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/Veraclins/Maintenance-Tracker.svg?branch=develop)](https://travis-ci.org/Veraclins/Maintenance-Tracker)
 # Maintenance-Tracker
 This is my second attempt at the Andela Maintenancace Tracker Challenge
 
