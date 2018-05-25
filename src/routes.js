@@ -1,10 +1,11 @@
 import { Router } from 'express';
 import requests from './storage/requests';
+import client from './database/index';
 
 const routes = Router();
 
 // Routes
-routes.get('/', (req, res) => {
+routes.all('/', (req, res) => {
   res.send({ message: 'Welcome to Maintenance Tracker API.' });
 });
 
@@ -65,6 +66,22 @@ routes.put('/users/requests/:requestId', (req, res) => {
     };
     res.send(requests[requestIndex]);
   }
+});
+
+
+routes.get('/database', (req, res) => {
+  client.connect();
+  const data = [];
+  client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, response) => {
+    if (err) throw err;
+    const { rows } = response;
+    rows.forEach((row) => {
+      console.log(JSON.stringify(row));
+      data.push(row);
+    });
+    res.send(data);
+    client.end();
+  });
 });
 
 export default routes;

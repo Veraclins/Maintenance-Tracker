@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Veraclins/Maintenance-Tracker-2.git"
+    "url": "git+https://github.com/Veraclins/Maintenance-Tracker.git"
   },
   "keywords": [
     "ES6",
@@ -18,21 +18,19 @@
     "API",
     "RESTFUL",
     "TDD",
-    "gitflow"
+    "Andela"
   ],
   "author": "Agada Clinton I.",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Veraclins/Maintenance-Tracker-2/issues"
+    "url": "https://github.com/Veraclins/Maintenance-Tracker/issues"
   },
-  "homepage": "https://github.com/Veraclins/Maintenance-Tracker-2#readme",
+  "homepage": "https://github.com/Veraclins/Maintenance-Tracker#readme",
   "dependencies": {
-    "babel-loader": "^7.1.4",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
     "body-parser": "^1.18.3",
-    "celebrate": "^8.0.0",
     "chai": "^4.1.2",
     "chai-http": "^4.0.0",
     "dotenv": "^5.0.1",
@@ -41,7 +39,7 @@
     "mocha": "^5.1.1",
     "morgan": "^1.9.0",
     "nodemon": "^1.17.4",
-    "supertest": "^3.1.0"
+    "pg": "^7.4.3"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -52,8 +50,7 @@
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.12.0",
-    "nyc": "^11.8.0",
-    "webpack": "^4.8.3"
+    "nyc": "^11.8.0"
   },
   "engines": {
     "node": "8.7.0"
