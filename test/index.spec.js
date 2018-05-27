@@ -5,10 +5,10 @@ import { server } from '../src/index';
 const expect = chai.expect; // eslint-disable-line prefer-destructuring
 chai.use(chaiHttp);
 
-describe('Root route, /v1/', () => {
+describe('Root route, /api/v1/', () => {
   it('responds with status 200', (done) => {
     chai.request(server)
-      .get('/v1/')
+      .get('/api/v1/')
       .end((err, res) => {
         expect(res).to.have.status(200);
         done();
@@ -17,7 +17,7 @@ describe('Root route, /v1/', () => {
 
   it('Sees the response body', (done) => {
     chai.request(server)
-      .get('/v1/')
+      .get('/api/v1/')
       .end((err, res) => {
         expect(res.body).to.have.property('message');
         done();
@@ -25,10 +25,10 @@ describe('Root route, /v1/', () => {
   });
 });
 
-describe('GET request to /v1/users/requests', () => {
+describe('GET request to /api/v1/users/requests', () => {
   it('Returns a status code of 200', (done) => {
     chai.request(server)
-      .get('/v1/users/requests')
+      .get('/api/v1/users/requests')
       .end((err, res) => {
         expect(res).to.have.status(200);
         done();
@@ -37,7 +37,7 @@ describe('GET request to /v1/users/requests', () => {
 
   it('Returns all requests of the logged in user', (done) => {
     chai.request(server)
-      .get('/v1/users/requests')
+      .get('/api/v1/users/requests')
       .end((err, res) => {
         expect(res.body).to.have.lengthOf.at.least(1);
         done();
@@ -45,10 +45,10 @@ describe('GET request to /v1/users/requests', () => {
   });
 });
 
-describe('GET request to /v1/users/requests/:requestId', () => {
+describe('GET request to /api/v1/users/requests/:requestId', () => {
   it('Returns a status code of 200', (done) => {
     chai.request(server)
-      .get('/v1/users/requests/2')
+      .get('/api/v1/users/requests/2')
       .end((err, res) => {
         expect(res).to.have.status(200);
         done();
@@ -57,7 +57,7 @@ describe('GET request to /v1/users/requests/:requestId', () => {
 
   it('Returns status 404 and an error message when an id that does not exist is provided', (done) => {
     chai.request(server)
-      .get('/v1/users/requests/20')
+      .get('/api/v1/users/requests/20')
       .end((err, res) => {
         expect(res).to.have.status(404);
         expect(res.body).to.have.property('message').that.contains('There is no request with the id 20');
@@ -66,7 +66,7 @@ describe('GET request to /v1/users/requests/:requestId', () => {
   });
 });
 
-describe('POST request to /v1/users/requests', () => {
+describe('POST request to /api/v1/users/requests', () => {
   const request = {
     user_dept: 'Web-development',
     title: 'General repainting',
@@ -77,7 +77,7 @@ describe('POST request to /v1/users/requests', () => {
   };
   it('it should create a user and return it', (done) => {
     chai.request(server)
-      .post('/v1/users/requests')
+      .post('/api/v1/users/requests')
       .send(request)
       .end((err, res) => {
         expect(res.status).to.be.equal(200);
@@ -90,7 +90,7 @@ describe('POST request to /v1/users/requests', () => {
   });
 });
 
-describe('PUT request to /v1/users/requests/:requesId', () => {
+describe('PUT request to /api/v1/users/requests/:requesId', () => {
   const request = {
     user_dept: 'Web-development',
     title: 'General repainting',
@@ -101,7 +101,7 @@ describe('PUT request to /v1/users/requests/:requesId', () => {
   };
   it('it should update a user and return it', (done) => {
     chai.request(server)
-      .put('/v1/users/requests/3')
+      .put('/api/v1/users/requests/3')
       .send(request)
       .end((err, res) => {
         expect(res.status).to.be.equal(200);
@@ -115,7 +115,7 @@ describe('PUT request to /v1/users/requests/:requesId', () => {
 
   it('Returns status 404 and an error message when an id that does not exist is provided', (done) => {
     chai.request(server)
-      .put('/v1/users/requests/20')
+      .put('/api/v1/users/requests/20')
       .end((err, res) => {
         expect(res).to.have.status(404);
         expect(res.body).to.have.property('message').that.contains('There is no request with the id 20');
