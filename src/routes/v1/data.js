@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createDatabase, createTable, createUser, dropTable } from '../../controllers/data';
+import { createEnumType, createRequestsTable, dropUsersTable, dropRequestsTable, createUsersTable, populateUsers, populateRequests } from '../../controllers/data';
 
 
 const dataRoute = Router();
@@ -9,9 +9,12 @@ const dataRoute = Router();
 // Used by logged in data only
 
 
-dataRoute.get('/database', createDatabase);
-dataRoute.get('/table', createTable);
-dataRoute.get('/drop', dropTable);
-dataRoute.get('/create', createUser);
+dataRoute.get('/create-enum', createEnumType);
+dataRoute.get('/create-requests', createRequestsTable);
+dataRoute.get('/create-users', createUsersTable);
+dataRoute.get('/drop-users', dropUsersTable);
+dataRoute.get('/drop-requests', dropRequestsTable);
+dataRoute.get('/populate-users', populateUsers);
+dataRoute.get('/populate-requests', populateRequests);
 
 export default dataRoute;
