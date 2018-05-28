@@ -3,13 +3,13 @@ import { Joi, isCelebrate } from 'celebrate';
 export const userValidator = {
   body: Joi.object().keys({
     email: Joi.string().email().required(),
-    first_name: Joi.string().min(3).required(),
-    last_name: Joi.string().min(3).required(),
+    firstName: Joi.string().min(3).required(),
+    lastName: Joi.string().min(3).required(),
     dept: Joi.string().required(),
     password: Joi.string().min(3).max(15).required(),
-    password_confirmation: Joi.any().valid(Joi.ref('password')).required()
+    passwordConfirmation: Joi.any().valid(Joi.ref('password')).required()
       .options({ language: { any: { allowOnly: 'must match password' } } }),
-    employee_code: Joi.string().length(5).required(),
+    employeeCode: Joi.string().length(5).required(),
   }),
 };
 

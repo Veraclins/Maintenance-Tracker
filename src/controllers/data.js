@@ -29,6 +29,7 @@ export const createRequestsTable = (req, res) => {
     try {
       await client.query(`CREATE TABLE requests(
         id SERIAL PRIMARY KEY, 
+        users_id INTEGER NOT NULL,
         title VARCHAR NOT NULL, 
         duration INTEGER NOT NULL, 
         description TEXT NOT NULL, 
@@ -159,10 +160,10 @@ export const populateRequests = (req, res) => {
     const client = await pool.connect();
     const data = [];
     try {
-      await client.query(`INSERT INTO requests (title, duration, description) VALUES
-      ('General Servicing of Sharp Scanner', 3, 'The quarterly routine maintenance service for the Sharp S300 scanner is long overdue and necessary in order to forestall total breakdown'),
-      ('General Servicing of Elepaq 3.5KVA Generator', 4, 'The quarterly routine maintenance service for the Elepaq 3.5KVA Generator is long overdue and necessary in order to forestall total breakdown. The love of the lord is the beginning of wisdom.'),
-      ('Change HP MFP 200f Printer Flex', 5, 'If you are passing parameters to your queries you will want to avoid string concatenating parameters into the query text directly. This can (and often does) lead to sql injection vulnerabilities. node-postgres supports paramterized queries, passing your query text unaltered as well as your parameters to the PostgreSQL server where the parameters are safely substituted into the query with battle-tested parameter substitution code within the server itself.')
+      await client.query(`INSERT INTO requests (users_id, title, duration, description) VALUES
+      (2, 'General Servicing of Sharp Scanner', 3, 'The quarterly routine maintenance service for the Sharp S300 scanner is long overdue and necessary in order to forestall total breakdown'),
+      (2, 'General Servicing of Elepaq 3.5KVA Generator', 4, 'The quarterly routine maintenance service for the Elepaq 3.5KVA Generator is long overdue and necessary in order to forestall total breakdown. The love of the lord is the beginning of wisdom.'),
+      (3, 'Change HP MFP 200f Printer Flex', 5, 'If you are passing parameters to your queries you will want to avoid string concatenating parameters into the query text directly. This can (and often does) lead to sql injection vulnerabilities. node-postgres supports paramterized queries, passing your query text unaltered as well as your parameters to the PostgreSQL server where the parameters are safely substituted into the query with battle-tested parameter substitution code within the server itself.')
       RETURNING id;`, (err, response) => {
         if (response) {
           const { rows } = response;
