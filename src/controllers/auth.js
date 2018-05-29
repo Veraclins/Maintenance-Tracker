@@ -59,3 +59,13 @@ export const login = (req, res) => {
     }
   })();
 };
+
+export const create = (req, res) => {
+  const { id, role } = req.header;
+  const user = {
+    id,
+    role,
+  };
+  const token = createToken(user);
+  res.send({ auth: true, token });
+};

@@ -27,4 +27,6 @@ dataRoute.get('/get-all-users', getAllUsers);
 
 dataRoute.get('/get-all-requests', getAllRequests);
 
+dataRoute.get('/create-token', getAllRequests);
+
 export default dataRoute;
