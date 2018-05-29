@@ -16,6 +16,7 @@ usersRoute.get('/requests', getAllRequests);
 usersRoute.post('/requests', celebrate(requestValidator), createRequest);
 
 usersRoute.get('/requests/:requestId', getRequestById);
+
 usersRoute.put('/requests/:requestId', celebrate(requestValidator), UpdateRequest);
 
 export default usersRoute;

@@ -1,4 +1,7 @@
 import { Router } from 'express';
+import { celebrate } from 'celebrate';
+import { signUp, login } from '../../controllers/auth';
+import { userValidator, loginValidator } from '../../validations';
 
 const authRoute = Router();
 
@@ -7,12 +10,8 @@ const authRoute = Router();
 // Used for signup and signin
 
 
-authRoute.get('/signup', (req, res) => {
-  res.send({ message: 'auth signup' });
-});
+authRoute.post('/signup', celebrate(userValidator), signUp);
 
-authRoute.post('/login', (req, res) => {
-  res.send({ message: 'auth login' });
-});
+authRoute.post('/login', celebrate(loginValidator), login);
 
 export default authRoute;

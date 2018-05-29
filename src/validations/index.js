@@ -13,6 +13,13 @@ export const userValidator = {
   }),
 };
 
+export const loginValidator = {
+  body: Joi.object().keys({
+    email: Joi.string().email().required(),
+    password: Joi.string().min(3).max(15).required(),
+  }),
+};
+
 export const requestValidator = {
   body: Joi.object().keys({
     title: Joi.string().min(10).required(),

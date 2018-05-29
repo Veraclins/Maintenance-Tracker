@@ -134,10 +134,10 @@ export const populateUsers = (req, res) => {
     const data = [];
     try {
       await client.query(`INSERT INTO users (first_name, last_Name, email, password, dept, role, employee_code) VALUES
-      ('Agada', 'Innocent', 'clinton@gmail.com', 'password', 'Web Development', 'Admin', 'WD001'),
-      ('Agada', 'Clinton', 'innocent@gmail.com', 'password', 'Maintenance', 'User', 'WD002'),
-      ('Anthony', 'Solomon', 'solomon@gmail.com', 'password', 'Procurement', 'User', 'WD003'),
-      ('Godwin', 'Andrew', 'andrew@gmail.com', 'password', 'Sales', 'User', 'WD004')
+      ('Agada', 'Clinton', 'clinton@test.com', '$2b$08$7Eag5c9WgbiM7RQBM7mcaOTAJo.CXp5SeYsxSCgu2evrhUH1Xzney', 'Web Development', 'Admin', 'WD001'),
+      ('Agada', 'Innocent', 'innocent@test.com', '$2b$08$7Eag5c9WgbiM7RQBM7mcaOTAJo.CXp5SeYsxSCgu2evrhUH1Xzney', 'Maintenance', 'User', 'WD002'),
+      ('Anthony', 'Solomon', 'solomon@test.com', '$2b$08$7Eag5c9WgbiM7RQBM7mcaOTAJo.CXp5SeYsxSCgu2evrhUH1Xzney', 'Procurement', 'User', 'WD003'),
+      ('Godwin', 'Andrew', 'andrew@test.com', '$2b$08$7Eag5c9WgbiM7RQBM7mcaOTAJo.CXp5SeYsxSCgu2evrhUH1Xzney', 'Sales', 'User', 'WD004')
       RETURNING id;`, (err, response) => {
         if (response) {
           const { rows } = response;
@@ -175,6 +175,46 @@ export const populateRequests = (req, res) => {
           res.send(err.message);
         }
       });
+    } finally {
+      client.release();
+    }
+  })();
+};
+
+export const getAllUsers = (req, res) => {
+  (async () => {
+    const client = await pool.connect();
+    const data = [];
+    try {
+      client.query('SELECT * FROM users ORDER BY ID ASC')
+        .then((response) => {
+          const { rows } = response;
+          rows.forEach((row) => {
+            data.push(row);
+          });
+          res.send(data);
+        })
+        .catch(err => res.send(err.message));
+    } finally {
+      client.release();
+    }
+  })();
+};
+
+export const getAllRequests = (req, res) => {
+  (async () => {
+    const client = await pool.connect();
+    const data = [];
+    try {
+      client.query('SELECT * FROM requests ORDER BY ID ASC')
+        .then((response) => {
+          const { rows } = response;
+          rows.forEach((row) => {
+            data.push(row);
+          });
+          res.send(data);
+        })
+        .catch(err => res.send(err.message));
     } finally {
       client.release();
     }

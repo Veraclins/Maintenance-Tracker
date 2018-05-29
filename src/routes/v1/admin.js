@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { adminGetAllRequests, approveRequest, disapproveRequest, resolveRequest } from '../../controllers/admin';
 
 const adminRoute = Router();
 
@@ -7,19 +8,12 @@ const adminRoute = Router();
 // Thes routes are only available to the admin(s)
 
 
-adminRoute.get('/', (req, res) => {
-  res.send({ message: 'get all requests' });
-});
+adminRoute.get('/', adminGetAllRequests);
 
-adminRoute.put('/:requestId/approve', (req, res) => {
-  res.send({ message: 'approve a request' });
-});
+adminRoute.put('/:requestId/approve', approveRequest);
 
-adminRoute.put('/:requestId/disapprove', (req, res) => {
-  res.send({ message: 'disapprove a request' });
-});
-adminRoute.put('/:requestId/resolve', (req, res) => {
-  res.send({ message: 'resolve a request' });
-});
+adminRoute.put('/:requestId/disapprove', disapproveRequest);
+
+adminRoute.put('/:requestId/resolve', resolveRequest);
 
 export default adminRoute;
