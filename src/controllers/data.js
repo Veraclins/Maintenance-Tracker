@@ -1,26 +1,5 @@
 import pool from '../database';
 
-export const createEnumType = (req, res) => {
-  (async () => {
-    const client = await pool.connect();
-    const data = [];
-    try {
-      await client.query("CREATE TYPE status AS ENUM ('pending', 'approved', 'resolved');", (err, response) => {
-        if (response) {
-          const { rows } = response;
-          rows.forEach((row) => {
-            data.push(row);
-          });
-          res.send(data);
-        } else {
-          res.send(err.message);
-        }
-      });
-    } finally {
-      client.release();
-    }
-  })();
-};
 
 export const createRequestsTable = (req, res) => {
   (async () => {
@@ -175,46 +154,6 @@ export const populateRequests = (req, res) => {
           res.send(err.message);
         }
       });
-    } finally {
-      client.release();
-    }
-  })();
-};
-
-export const getAllUsers = (req, res) => {
-  (async () => {
-    const client = await pool.connect();
-    const data = [];
-    try {
-      client.query('SELECT * FROM users ORDER BY ID ASC')
-        .then((response) => {
-          const { rows } = response;
-          rows.forEach((row) => {
-            data.push(row);
-          });
-          res.send(data);
-        })
-        .catch(err => res.send(err.message));
-    } finally {
-      client.release();
-    }
-  })();
-};
-
-export const getAllRequests = (req, res) => {
-  (async () => {
-    const client = await pool.connect();
-    const data = [];
-    try {
-      client.query('SELECT * FROM requests ORDER BY ID ASC')
-        .then((response) => {
-          const { rows } = response;
-          rows.forEach((row) => {
-            data.push(row);
-          });
-          res.send(data);
-        })
-        .catch(err => res.send(err.message));
     } finally {
       client.release();
     }

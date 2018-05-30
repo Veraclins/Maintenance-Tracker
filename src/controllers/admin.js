@@ -84,6 +84,7 @@ export const resolveRequest = (req, res) => {
       values: ['resolved', requestId],
     };
     const client = await pool.connect();
+    console.log(requestId);
     try {
       await client.query(query)
         .then((response) => {

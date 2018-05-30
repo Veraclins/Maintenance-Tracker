@@ -1,6 +1,7 @@
 /* eslint-disable consistent-return */
 const isAdmin = (req, res, next) => {
   const { role } = req.user;
+  console.log(role);
   if (role === 'Admin') {
     next();
   } else {

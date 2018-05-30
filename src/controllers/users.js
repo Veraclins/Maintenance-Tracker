@@ -57,7 +57,7 @@ export const getRequestById = (req, res) => {
           } else {
             res.status(404).send({
               status: 'Not Found',
-              message: "You don't seem to have a request with the given value. Please check again",
+              message: "You don't seem to have a request with the given id. Please check again",
             });
           }
         })
@@ -74,7 +74,7 @@ export const UpdateRequest = (req, res) => {
     const userId = req.user.id;
     const { requestId } = req.params;
     const query = {
-      text: 'UPDATE requests SET title=($1), duration=($2), description=($3) WHERE (id=($4) AND users_id=($5)status=($6) AND ) RETURNING *',
+      text: 'UPDATE requests SET title=($1), duration=($2), description=($3) WHERE (id=($4) AND users_id=($5) AND status=($6)) RETURNING *',
       values: [title, duration, description, requestId, userId, 'pending'],
     };
     const client = await pool.connect();
@@ -87,7 +87,7 @@ export const UpdateRequest = (req, res) => {
           } else {
             res.status(404).send({
               status: 'Not Found',
-              message: "You don't seem to have a request with the given value. Please check again",
+              message: "You don't seem to have a request with the given id. Please check again",
             });
           }
         })

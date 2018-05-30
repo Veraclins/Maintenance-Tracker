@@ -40,17 +40,21 @@ export const login = (req, res) => {
       await client.query('SELECT * FROM users WHERE email=($1)', [email])
         .then((response) => {
           const request = response.rows[0];
-          const passwordIsValid = bcrypt.compareSync(password, request.password);
-          if (!passwordIsValid) {
-            res.status(401).send({ auth: false, token: null, message: 'Please check your details and try again' });
+          if (request) {
+            const passwordIsValid = bcrypt.compareSync(password, request.password);
+            if (!passwordIsValid) {
+              res.status(401).send({ auth: false, token: null, message: 'Please check your details and try again' });
+            } else {
+              const { id, role } = request;
+              const user = {
+                id,
+                role,
+              };
+              const token = createToken(user);
+              res.send({ auth: true, token });
+            }
           } else {
-            const { id, role } = request;
-            const user = {
-              id,
-              role,
-            };
-            const token = createToken(user);
-            res.send({ auth: true, token });
+            return res.status(401).send({ auth: false, token: null, message: 'Please check your details and try again' });
           }
         })
         .catch(err => res.send(err.message));
@@ -58,14 +62,4 @@ export const login = (req, res) => {
       client.release();
     }
   })();
-};
-
-export const create = (req, res) => {
-  const { id, role } = req.header;
-  const user = {
-    id,
-    role,
-  };
-  const token = createToken(user);
-  res.send({ auth: true, token });
 };

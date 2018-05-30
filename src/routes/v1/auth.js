@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { celebrate } from 'celebrate';
-import { signUp, login, create } from '../../controllers/auth';
 import { userValidator, loginValidator } from '../../validations';
+import { signUp, login } from '../../controllers/auth';
 
 const authRoute = Router();
 
@@ -13,7 +13,5 @@ const authRoute = Router();
 authRoute.post('/signup', celebrate(userValidator), signUp);
 
 authRoute.post('/login', celebrate(loginValidator), login);
-
-authRoute.post('/create-token', create);
 
 export default authRoute;
