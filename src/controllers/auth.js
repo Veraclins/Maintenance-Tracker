@@ -23,7 +23,7 @@ export const signUp = (req, res) => {
             role,
           };
           const token = createToken(user);
-          res.send({ auth: true, token });
+          res.status(200).send({ auth: true, token });
         })
         .catch(err => res.send({ auth: false, error: err.message }));
     } finally {
@@ -51,7 +51,7 @@ export const login = (req, res) => {
                 role,
               };
               const token = createToken(user);
-              res.send({ auth: true, token });
+              res.status(200).send({ auth: true, token });
             }
           } else {
             return res.status(401).send({ auth: false, token: null, message: 'Please check your details and try again' });
