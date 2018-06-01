@@ -24,8 +24,8 @@ export const approveRequest = (req, res) => {
   (async () => {
     const { requestId } = req.params;
     const query = {
-      text: 'UPDATE requests SET status=($1) WHERE id=($2) RETURNING *',
-      values: ['approved', requestId],
+      text: 'UPDATE requests SET status=($1) WHERE (id=($2) AND status=($3)) RETURNING *',
+      values: ['approved', requestId, 'pending'],
     };
     const client = await pool.connect();
     try {
@@ -36,8 +36,7 @@ export const approveRequest = (req, res) => {
             res.send(request);
           } else {
             res.status(404).send({
-              status: 'Not Found',
-              message: 'The given requestId does not exist. Please check again',
+              message: 'The given requestId does not exist or it has already been approved/disapproved. Please check again',
             });
           }
         })
@@ -52,8 +51,8 @@ export const disapproveRequest = (req, res) => {
   (async () => {
     const { requestId } = req.params;
     const query = {
-      text: 'UPDATE requests SET status=($1) WHERE id=($2) RETURNING *',
-      values: ['disapproved', requestId],
+      text: 'UPDATE requests SET status=($1) WHERE (id=($2) AND status=($3)) RETURNING *',
+      values: ['disapproved', requestId, 'pending'],
     };
     const client = await pool.connect();
     try {
@@ -64,8 +63,7 @@ export const disapproveRequest = (req, res) => {
             res.send(request);
           } else {
             res.status(404).send({
-              status: 'Not Found',
-              message: 'The given requestId does not exist. Please check again',
+              message: 'The given requestId does not exist or it has already been approved/disapproved. Please check again',
             });
           }
         })
@@ -80,11 +78,10 @@ export const resolveRequest = (req, res) => {
   (async () => {
     const { requestId } = req.params;
     const query = {
-      text: 'UPDATE requests SET status=($1) WHERE id=($2) RETURNING *',
-      values: ['resolved', requestId],
+      text: 'UPDATE requests SET status=($1) WHERE (id=($2) AND status=($3)) RETURNING *',
+      values: ['resolved', requestId, 'approved'],
     };
     const client = await pool.connect();
-    console.log(requestId);
     try {
       await client.query(query)
         .then((response) => {
@@ -93,8 +90,7 @@ export const resolveRequest = (req, res) => {
             res.send(request);
           } else {
             res.status(404).send({
-              status: 'Not Found',
-              message: 'The given requestId does not exist. Please check again',
+              message: 'The given requestId does not exist or it has has not been approved. Please check again',
             });
           }
         })

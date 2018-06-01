@@ -4,7 +4,8 @@
   "description": "A RESTFUL Api for the Maintenance tracker app for Andela Bootcamp Challenge",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon src/index.js --exec babel-node --presets babel-preset-env",
+    "start": "babel-node src/index.js --presets babel-preset-env",
+    "dev": "nodemon src/index.js --exec babel-node --presets babel-preset-env",
     "test": "cross-env NODE_ENV=test nyc mocha",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
@@ -32,19 +33,17 @@
     "babel-register": "^6.26.0",
     "bcrypt": "^2.0.1",
     "body-parser": "^1.18.3",
-    "celebrate": "^8.0.0",
     "chai": "^4.1.2",
     "chai-http": "^4.0.0",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.2.1",
-    "method-override": "^2.3.10",
     "mocha": "^5.1.1",
     "morgan": "^1.9.0",
-    "nodemon": "^1.17.4",
     "pg": "^7.4.3"
   },
-  "devDependencies": {
+  "devDependencies": {    
+    "nodemon": "^1.17.4",
     "babel-cli": "^6.26.0",
     "babel-plugin-istanbul": "^4.1.6",
     "cors": "^2.8.4",

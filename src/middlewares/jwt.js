@@ -1,10 +1,10 @@
 import jwt from 'jsonwebtoken';
 
 export function createToken(user) {
-  const { id, role } = user;
+  const { id, firstName, lastName } = user;
   const secret = process.env.JWT_SECRET;
-  const token = jwt.sign({ id, role }, secret, {
-    expiresIn: 86400, // expires in 24 hours
+  const token = jwt.sign({ id, firstName, lastName }, secret, {
+    expiresIn: 259200, // expires in 24 hours
   });
   return token;
 }
@@ -15,19 +15,19 @@ export const verifyToken = async (req, res, next) => {
   const secret = process.env.JWT_SECRET;
   try {
     if (!token) {
-      return res.status(400).send({
-        status: 'Error',
-        message: 'You must supply a token',
+      res.status(400).send({ error: 'You must supply a token' });
+    } else {
+      jwt.verify(token, secret, (err, decoded) => {
+        if (decoded) {
+          const { id, firstName, lastName } = decoded;
+          req.user = { id, firstName, lastName };
+          next();
+        } else {
+          res.status(401).send({ error: 'Your access may have expired. Please login again' });
+        }
       });
     }
-
-    jwt.verify(token, secret, (err, decoded) => {
-      const { id, role } = decoded;
-      req.user = { id, role };
-      next();
-    });
   } catch (err) {
-    console.log(err);
     next(err);
   }
 };
