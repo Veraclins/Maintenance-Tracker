@@ -1,7 +1,6 @@
 import { Router } from 'express';
-import { celebrate } from 'celebrate';
-import { requestValidator } from '../../validations';
 import { getAllRequests, createRequest, getRequestById, UpdateRequest } from '../../controllers/users';
+import { validateRequest } from '../../validations/validate';
 
 
 const usersRoute = Router();
@@ -13,10 +12,10 @@ const usersRoute = Router();
 
 usersRoute.get('/requests', getAllRequests);
 
-usersRoute.post('/requests', celebrate(requestValidator), createRequest);
+usersRoute.post('/requests', validateRequest, createRequest);
 
 usersRoute.get('/requests/:requestId', getRequestById);
 
-usersRoute.put('/requests/:requestId', celebrate(requestValidator), UpdateRequest);
+usersRoute.put('/requests/:requestId', validateRequest, UpdateRequest);
 
 export default usersRoute;

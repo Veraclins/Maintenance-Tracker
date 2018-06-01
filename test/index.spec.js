@@ -119,7 +119,6 @@ describe('POST request to /api/v1/auth/signup', () => {
       .end((err, res) => {
         expect(res.status).to.be.equal(200);
         expect(res.body).to.be.an('object');
-        expect(res.body).to.have.property('auth', true);
         expect(res.body).to.have.property('token');
         done();
       });
@@ -157,7 +156,6 @@ describe('POST request to /api/v1/auth/login', () => {
         token = res.body.token; // eslint-disable-line prefer-destructuring
         expect(res.status).to.be.equal(200);
         expect(res.body).to.be.an('object');
-        expect(res.body).to.have.property('auth', true);
         expect(res.body).to.have.property('token');
         done();
       });
@@ -173,8 +171,6 @@ describe('POST request to /api/v1/auth/login', () => {
       .end((err, res) => {
         expect(res.status).to.be.equal(401);
         expect(res.body).to.be.an('object');
-        expect(res.body).to.have.property('auth', false);
-        expect(res.body).to.have.property('token', null);
         done();
       });
   });
@@ -189,8 +185,7 @@ describe('POST request to /api/v1/auth/login', () => {
       .end((err, res) => {
         expect(res.status).to.be.equal(401);
         expect(res.body).to.be.an('object');
-        expect(res.body).to.have.property('auth', false);
-        expect(res.body).to.have.property('token', null);
+        expect(res.body).to.have.property('error');
         done();
       });
   });
@@ -349,7 +344,6 @@ describe('GET request to /api/v1/requests', () => {
       .end((err, res) => {
         adminToken = res.body.token; // eslint-disable-line prefer-destructuring
         expect(res.status).to.be.equal(200);
-        expect(res.body).to.have.property('auth', true);
         expect(res.body).to.have.property('token');
         done();
       });
@@ -436,10 +430,10 @@ describe('GET request to /api/v1/requests/2/approve', () => {
   });
 });
 
-describe('GET request to /api/v1/requests/2/disapprove', () => {
+describe('GET request to /api/v1/requests/3/disapprove', () => {
   it('Disapprove a request and return it', (done) => {
     chai.request(server)
-      .put('/api/v1/requests/2/disapprove')
+      .put('/api/v1/requests/3/disapprove')
       .set('x-access-token', adminToken)
       .end((err, res) => {
         expect(res.status).to.be.equal(200);
@@ -451,7 +445,7 @@ describe('GET request to /api/v1/requests/2/disapprove', () => {
 
   it('Returns forbidden if the user is not an admin', (done) => {
     chai.request(server)
-      .put('/api/v1/requests/2/disapprove')
+      .put('/api/v1/requests/3/disapprove')
       .set('x-access-token', token)
       .end((err, res) => {
         expect(res).to.have.status(403);
@@ -461,7 +455,7 @@ describe('GET request to /api/v1/requests/2/disapprove', () => {
 
   it('Returns error if no token is supplied', (done) => {
     chai.request(server)
-      .put('/api/v1/requests/2/disapprove')
+      .put('/api/v1/requests/3/disapprove')
       .end((err, res) => {
         expect(res).to.have.status(400);
         done();

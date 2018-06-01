@@ -17,15 +17,16 @@ export const signUp = (req, res) => {
     try {
       await client.query(query)
         .then((response) => {
-          const { id, role } = response.rows[0];
+          const { id } = response.rows[0];
           const user = {
             id,
-            role,
+            firstName,
+            lastName,
           };
           const token = createToken(user);
-          res.send({ auth: true, token });
+          res.send({ token });
         })
-        .catch(err => res.send({ auth: false, error: err.message }));
+        .catch(err => res.send({ error: err.message }));
     } finally {
       client.release();
     }
@@ -43,21 +44,26 @@ export const login = (req, res) => {
           if (request) {
             const passwordIsValid = bcrypt.compareSync(password, request.password);
             if (!passwordIsValid) {
-              res.status(401).send({ auth: false, token: null, message: 'Please check your details and try again' });
+              res.status(401).send({ error: 'Please check your details and try again' });
             } else {
-              const { id, role } = request;
+              const { id } = request;
+              const firstName = request.first_name;
+              const lastName = request.last_name;
               const user = {
                 id,
-                role,
+                firstName,
+                lastName,
               };
               const token = createToken(user);
-              res.send({ auth: true, token });
+              res.send({ token });
             }
           } else {
-            return res.status(401).send({ auth: false, token: null, message: 'Please check your details and try again' });
+            return res.status(401).send({ error: 'Please check your details and try again' });
           }
         })
         .catch(err => res.send(err.message));
+    } catch (err) {
+      return res.status(500).send({ error: err.message });
     } finally {
       client.release();
     }
