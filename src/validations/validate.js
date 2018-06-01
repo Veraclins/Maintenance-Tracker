@@ -93,8 +93,13 @@ export const validateRequest = (req, res, next) => {
       errors.title = 'must be string and at least 10 characters';
     }
 
+<<<<<<< HEAD
     if (!/\d/.test(duration)) {
       errors.duration = 'must be a number';
+=======
+    if (!/\d{2}/.test(duration)) {
+      errors.duration = 'must be number and not more than 2 digits';
+>>>>>>> 0857471169b6fd4e6a8b7f5bd3adb9965e93265c
     }
 
     if (description.length < 20 || !/[A-Za-z0-9\s_.,!"()?@'/$]*/.test(description)) {
